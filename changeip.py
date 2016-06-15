@@ -10,6 +10,7 @@ broadcast = '.255'
 dns = '8.8.8.8'
 
 network_file = '/etc/network/interfaces'
+reboot_text = ''
 netdata = {}
 
 def verify(ip_components):
@@ -21,6 +22,7 @@ def verify(ip_components):
 	return True
 
 def reboot_server():
+	print (netdata['reboot_text'])
 	answer = raw_input('\nWould you like to restart the interface now? (Y/n): ') or "Y"
 	if answer.lower() == "y":
 		call("sudo ifdown eth0 && sudo ifup eth0", shell=True)
@@ -40,6 +42,8 @@ def build_netdata(ipaddress):
 	netdata['mask'] = mask
 	netdata['network'] = baseip + net
 	netdata['broadcast'] = baseip + broadcast
+	netdata['reboot_text'] = "I have created a /24 based IP Address and netmask based on {0}".format(netdata['ipaddr'])
+
 
 	return netdata
 
@@ -58,19 +62,48 @@ def build_netfile(netdata):
 	target_data += '\n  dns-nameservers ' + dns
 	target_data += '\n'
 
+	return target_data
+
+def build_dhcpfile():
+	target_data = '''
+	# interfaces(5) file used by ifup(8) and ifdown(8)
+	# Include files from /etc/network/interfaces.d:
+	source-directory /etc/network/interfaces.d
+
+	# The loopback network interface
+	auto lo
+	iface lo inet loopback
+
+	auto eth0
+	iface eth0 inet dhcp
+	'''
+
+	netdata['reboot_text'] = "I have setup the networking to look for a dhcp address."
+	return target_data
+
+
+def write_data(target_data):
 	target_file = open(network_file, 'w')
 	target_file.truncate()
 	target_file.write(target_data)
 	target_file.close()
 
+	return
+
 def main(argv):
 	if len(argv) < 2:
-		print ("Please enter the ip address for this server on the command line.")
+		print ("Please enter the ip address or 'dhcp' for this server on the command line.")
+		print ("Examples:  {0} 10.1.1.12   :  {0} dhcp").format(argv[0])
 		exit()
+	
+	if argv[1].lower() == "dhcp":
+		target_data = build_dhcpfile()
 	else:
 		netdata = build_netdata(argv[1])
+		target_data = build_netfile(netdata)
 
-	build_netfile(netdata)
+	write_data(target_data)
+
 	print ("\nChanges completed.")
 	print ("These changes will not take effect until the system is rebooted or the interface is reset.")
 
