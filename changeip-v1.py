@@ -1,0 +1,80 @@
+#!/usr/bin/env python
+
+import sys
+from subprocess import call
+
+gw = '.1'
+mask = '255.255.255.0'
+net = '.0'
+broadcast = '.255'
+dns = '8.8.8.8'
+
+network_file = '/etc/network/interfaces'
+netdata = {}
+
+def verify(ip_components):
+	if ip_components[0] == '0':
+		return False
+	for octet in ip_components:
+		if int(octet) > 255:
+			return False
+	return True
+
+def reboot_server():
+	answer = raw_input('\nWould you like to restart the interface now? (Y/n): ') or "Y"
+	if answer.lower() == "y":
+		call("sudo ifdown eth0 && sudo ifup eth0", shell=True)
+
+	return
+
+def build_netdata(ipaddress):
+	ip_components = ipaddress.split('.')
+	baseip = '.'.join(ip_components[0:3])
+
+	if not verify(ip_components):
+		print ("This is not a valid IP address:  " + ipaddress)
+		exit()
+
+	netdata['ipaddr'] = ipaddress
+	netdata['gw'] = baseip + gw
+	netdata['mask'] = mask
+	netdata['network'] = baseip + net
+	netdata['broadcast'] = baseip + broadcast
+
+	return netdata
+
+def build_netfile(netdata):
+	target_data = ''
+	print ("Assuming {} mask, {} default gateway, {} dns.".format (mask, gw, dns))
+
+	target_data += '##  This file written by changeip.py'
+	target_data += '\nauto eth0'
+	target_data += '\niface eth0 inet static'
+	target_data += '\n  address ' + netdata['ipaddr']
+	target_data += '\n  gateway ' + netdata['gw']
+	target_data += '\n  netmask ' + netdata['mask']
+	target_data += '\n  network ' + netdata['network']
+	target_data += '\n  broadcast ' + netdata['broadcast']
+	target_data += '\n  dns-nameservers ' + dns
+	target_data += '\n'
+
+	target_file = open(network_file, 'w')
+	target_file.truncate()
+	target_file.write(target_data)
+	target_file.close()
+
+def main(argv):
+	if len(argv) < 2:
+		print ("Please enter the ip address for this server on the command line.")
+		exit()
+	else:
+		netdata = build_netdata(argv[1])
+
+	build_netfile(netdata)
+	print ("\nChanges completed.")
+	print ("These changes will not take effect until the system is rebooted or the interface is reset.")
+
+	reboot_server()
+
+if __name__ == '__main__':
+	main(sys.argv)
