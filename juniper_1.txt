@@ -1,0 +1,1402 @@
+
+saw-core-ex8208vc:
+
+************************************************
+*        __        __      _ _ _               *
+*       / _\ __ _ / _| ___| (_) |_ ___         *
+*       \ \ / _` | |_ / _ \ | | __/ _ \        *
+*       _\ \ (_| |  _|  __/ | | ||  __/        *
+*       \__/\__,_|_|  \___|_|_|\__\___|        *
+*                                              *
+*                W A R N I N G !               *
+*                                              *
+*                                              *
+* Unauthorized or improper use of this system  *
+* may result in administrative disciplinary    *
+* action and civil and criminal penalties.     *
+* By continuing to use this system you         *
+* indicate your awareness of and consent to    *
+* these terms and conditions of use.           *
+* LOG OFF IMMEDIATELY if you do not agree      *
+* to the conditions stated in this warning.    *
+*                                              *
+*   ALL VIOLATORS ARE SUBJECT TO PROSECUTION   *
+*                                              *
+************************************************
+ankur.desai@saw-core-ex8208vc's password:
+--- JUNOS 11.4R2.14 built 2012-03-17 18:55:36 UTC
+{master:8}
+ankur.desai@saw-core-ex8208vc> show configuration | display set
+set version 11.4R2.14
+set system host-name saw-core-ex8208vc
+set system time-zone EST5EDT
+set system arp aging-timer 5
+set system authentication-order tacplus
+set system authentication-order password
+set system root-authentication encrypted-password XXXXX
+set system name-server 10.0.128.115
+set system name-server 10.7.128.115
+set system tacplus-server 10.0.128.31 secret "$9$V1b4Z.mTzFnHqmfzFtpLxN-b2aZUHqfJZpB"
+set system tacplus-server 10.0.128.31 source-address 10.0.254.20
+set system tacplus-server 10.7.128.31 secret "$9$B8H1Se7NbsYgLxNdsYGUCtu01hrevLxdleUH"
+set system tacplus-server 10.7.128.31 source-address 10.0.254.20
+set system accounting events login
+set system accounting events change-log
+set system accounting events interactive-commands
+set system accounting destination tacplus server 10.0.128.31 secret "$9$xvd7wgji.PfTGDikPf6/KM8L7VYgoGDk2g/t"
+set system accounting destination tacplus server 10.0.128.31 source-address 10.0.254.20
+set system accounting destination tacplus server 10.7.128.31 secret "$9$A58dt1hMWxN-VevWLN-g4Fn/9tORhSevLEh4Z"
+set system accounting destination tacplus server 10.7.128.31 source-address 10.0.254.20
+set system login message "\n************************************************\n*        __        __      _ _ _               *\n*       / _\\ __ _ / _| ___| (_) |_ ___         *\n*       \\ \\ / _` | |_ / _ \\ | | __/ _ \\        *\n*       _\\ \\ (_| |  _|  __/ | | ||  __/        *\n*       \\__/\\__,_|_|  \\___|_|_|\\__\\___|        *\n*                                              *\n*                W A R N I N G !               *\n*                                              *\n*                                              *\n* Unauthorized or improper use of this system  *\n* may result in administrative disciplinary    *\n* action and civil and criminal penalties.     *\n* By continuing to use this system you         *\n* indicate your awareness of and consent to    *\n* these terms and conditions of use.           *\n* LOG OFF IMMEDIATELY if you do not agree      *\n* to the conditions stated in this warning.    *\n*                                              *\n*   ALL VIOLATORS ARE SUBJECT TO PROSECUTION   *\n*                                              *\n************************************************\n"
+set system login user remote uid 2001
+set system login user remote class super-user
+set system services ssh root-login deny
+set system services ssh protocol-version v2
+set system services netconf ssh
+set system syslog user * any emergency
+set system syslog host 10.0.128.23 any any
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file messages match "!(Temp sensor|Temperature Warm)"
+set system syslog file interactive-commands interactive-commands any
+set system syslog file default-log-messages any any
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|(vc add)|(vc delete)|transitioned|Transferred|transfer-file|QFABRIC_NETWORK_NODE_GROUP|QFABRIC_SERVER_NODE_GROUP|QFABRIC_NODE|(license add)|(license delete)|(package -X update)|(package -X delete)|GRES|CFMD_CCM_DEFECT|LFMD_3AH|MEDIA_FLOW_ERROR|RPD_MPLS_PATH_BFD"
+set system syslog file default-log-messages structured-data
+set system syslog source-address 10.0.252.1
+set system archival configuration transfer-on-commit
+set system archival configuration archive-sites "scp://juniper@bounty.sag.asn/home/juniper" password ""
+set system commit synchronize
+set system ntp server 10.0.128.115 prefer
+set system ntp server 10.7.128.115
+set chassis nssu upgrade-group group1 member 0 fpcs 0
+set chassis nssu upgrade-group group2 member 1 fpcs 0
+set chassis nssu upgrade-group group3 member 0 fpcs 1
+set chassis nssu upgrade-group group4 member 1 fpcs 1
+set chassis nssu upgrade-group 5 member 0 fpcs 6
+set chassis nssu upgrade-group 5 member 0 fpcs 7
+set chassis nssu upgrade-group 6 member 1 fpcs 6
+set chassis nssu upgrade-group 6 member 1 fpcs 7
+set chassis redundancy graceful-switchover
+set chassis aggregated-devices ethernet device-count 32
+set interfaces xe-0/0/2 description net.sch-core-xe-0-0-22.SAFEDRKCOLCOL00001.ch22
+set interfaces xe-0/0/2 mtu 9216
+set interfaces xe-0/0/2 unit 0 family ethernet-switching port-mode trunk
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members thirdPartyDMZ
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members Bridged_DMZ
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members PIX-Failover
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members PIX-Stateful
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members PIXVPN-Failover
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members PIXVPN-Stateful
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members F5INT-Failover
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members f5pe01a-failover
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members sabrix-multicast
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members bridged-LWAPPwireless
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members FieldGuest
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members juniper-ha
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members juniper-fab
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members fortigate310-ha
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members bridged-ezvpninternal
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members dmz-iaai2
+set interfaces xe-0/0/2 unit 0 family ethernet-switching vlan members unused-cstp
+set interfaces xe-0/0/3 description net.1.nx9504b.e1/33
+set interfaces xe-0/0/3 enable
+set interfaces xe-0/0/3 unit 0 family inet address 10.0.254.77/30
+set interfaces xe-0/0/4 description net.5.ar7508a.eth3-2
+set interfaces xe-0/0/4 unit 0 family inet address 10.0.254.165/30
+set interfaces xe-0/0/5 description net.8.ar7508b.eth4-2
+set interfaces xe-0/0/5 unit 0 family inet address 10.0.254.177/30
+set interfaces xe-0/0/6 description net.1.mdf2-7050-1a.e49
+set interfaces xe-0/0/6 ether-options 802.3ad ae8
+set interfaces xe-0/0/7 description ar7508a.3/1
+set interfaces xe-0/0/7 ether-options 802.3ad ae1
+set interfaces xe-1/0/2 description net.1.mdf1-idfa-xe-0/0/34
+set interfaces xe-1/0/2 unit 0 family inet address 10.0.254.145/30
+set interfaces xe-1/0/3 description net.1.mdf1-idfb-xe-0/0/34
+set interfaces xe-1/0/3 unit 0 family inet address 10.0.254.137/30
+set interfaces xe-1/0/4 unit 0 family inet address 10.254.254.33/30
+set interfaces xe-1/0/5 description net.sch-core-xe-0-0-21.SAFEDRKCOLCOL00001.ch21
+set interfaces xe-1/0/5 unit 0 family inet address 10.254.254.41/30
+set interfaces xe-1/0/6 description net.3.asr1006a-te0/1/0
+set interfaces xe-1/0/6 unit 0 family inet address 10.0.254.185/30
+set interfaces xe-1/0/7 description ar7508a.4/1
+set interfaces xe-1/0/7 ether-options 802.3ad ae1
+set interfaces ge-6/0/0 description net.1.mdf1-6513a.3/11
+set interfaces ge-6/0/0 ether-options 802.3ad ae6
+set interfaces ge-6/0/1 description net.2.mdf1-6513a.3/12
+set interfaces ge-6/0/1 ether-options 802.3ad ae6
+set interfaces ge-6/0/2 description net.2.saw-fgt1000c.wan1
+set interfaces ge-6/0/2 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ge-6/0/3 description net.1.saw-fgt1000c.mgmt1
+set interfaces ge-6/0/3 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-6/0/4 description net.2.f5lpi01a.1.1
+set interfaces ge-6/0/4 ether-options 802.3ad ae16
+set interfaces ge-6/0/5 description net.2.f5lpi01b.1.1
+set interfaces ge-6/0/5 ether-options 802.3ad ae17
+set interfaces ge-6/0/6 description net.2.f5gpi01-1.1
+set interfaces ge-6/0/6 ether-options 802.3ad ae20
+set interfaces ge-6/0/7 description net.1.f5pe01a-mgmt
+set interfaces ge-6/0/7 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-6/0/8 description net.2.f5pe01a.1.1
+set interfaces ge-6/0/8 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-6/0/9 description net.3.f5pe01a.1.2
+set interfaces ge-6/0/9 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces ge-6/0/10 description net.4.f5pe01a.1.3
+set interfaces ge-6/0/10 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-6/0/10 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ge-6/0/11 description net.2.f5di01-vips.1.1
+set interfaces ge-6/0/11 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-6/0/11 unit 0 family ethernet-switching vlan members f5di01-vips
+set interfaces ge-6/0/11 unit 0 family ethernet-switching vlan members f5di01-vips-244
+set interfaces ge-6/0/12 description net.1.ns1.lan1
+set interfaces ge-6/0/12 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-6/0/13 description net.3.saw-fgt1000c.port3
+set interfaces ge-6/0/13 ether-options 802.3ad ae21
+set interfaces ge-6/0/14 description net.3.f5di01.1.3-temp-span
+set interfaces ge-6/0/14 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-6/0/14 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ge-6/0/14 unit 0 family ethernet-switching vlan members AIX-Dev
+set interfaces ge-6/0/14 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ge-6/0/14 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-6/0/32 description saw-core-asr1001b.po1
+set interfaces ge-6/0/32 ether-options 802.3ad ae23
+set interfaces ge-6/0/33 description asa5545a
+set interfaces ge-6/0/33 unit 0 family ethernet-switching vlan members usaa-asa
+set interfaces ge-6/0/39 unit 0 family ethernet-switching
+set interfaces ge-6/0/40 description OPEN-SINGLE
+set interfaces ge-6/0/41 description OPEN-SINGLE
+set interfaces ge-6/0/42 description net.1.7508a-ma1/1
+set interfaces ge-6/0/42 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-6/0/43 description net.1.7508b-ma1/1
+set interfaces ge-6/0/43 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-6/0/44 description net.0.saw-core-maglicsrv1.port0
+set interfaces ge-6/0/44 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-6/0/45 description net.2.border1.ge0/0/0
+set interfaces ge-6/0/45 ether-options 802.3ad ae22
+set interfaces ge-6/0/46 description net.1.webgate1a-0.direct
+set interfaces ge-6/0/46 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces ge-6/0/47 description net.1.border1.mgmt
+set interfaces ge-6/0/47 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-7/0/0 description net.3.mdf1-6513a.4/11
+set interfaces ge-7/0/0 ether-options 802.3ad ae6
+set interfaces ge-7/0/1 description net.4.mdf1-6513a.4/12
+set interfaces ge-7/0/1 ether-options 802.3ad ae6
+set interfaces ge-7/0/2 description net.1.saw-core-wvpn1.0/0
+set interfaces ge-7/0/2 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ge-7/0/3 description net.1.f5lpi01a.mgmt
+set interfaces ge-7/0/3 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-7/0/4 description net.4.f5lpi01a.1.3
+set interfaces ge-7/0/4 ether-options 802.3ad ae18
+set interfaces ge-7/0/5 description net.4.f5lpi01b.1.3
+set interfaces ge-7/0/5 ether-options 802.3ad ae19
+set interfaces ge-7/0/6 description net.1.f5gpi01.mgmt
+set interfaces ge-7/0/6 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-7/0/7 description net.5.f5pe01a.1.8
+set interfaces ge-7/0/7 unit 0 family ethernet-switching vlan members f5pe01a-failover
+set interfaces ge-7/0/8 description net.2.f5de01.1.1
+set interfaces ge-7/0/8 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-7/0/8 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-7/0/8 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ge-7/0/9 description net.3.f5de01.1.2
+set interfaces ge-7/0/9 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces ge-7/0/10 description net.1.dns-manager.lan1
+set interfaces ge-7/0/10 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-7/0/11 description net.1.ns01.lan1
+set interfaces ge-7/0/11 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-7/0/12 description net.1.ns02.lan1
+set interfaces ge-7/0/12 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-7/0/13 description asrvpn1.ge0/0/1
+set interfaces ge-7/0/13 unit 0 family inet address 10.0.254.125/30
+set interfaces ge-7/0/33 description dynatrace
+set interfaces ge-7/0/33 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-7/0/40 description net.1.srx5600-c1n0.fxp0
+set interfaces ge-7/0/40 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-7/0/43 description OPEN-SINGLE
+set interfaces ge-7/0/44 description OPEN-SINGLE
+set interfaces ge-7/0/45 description OPEN-SINGLE
+set interfaces ge-7/0/46 description net.3.wvpn-wf-mgmt.port9
+set interfaces ge-7/0/46 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-7/0/47 description net.1.wvpn-wf-int.port1
+set interfaces ge-7/0/47 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces xe-16/0/2 description net.sch-core-xe-1-0-22.SAFEDRKCOLCOL00002.ch22
+set interfaces xe-16/0/2 mtu 9216
+set interfaces xe-16/0/2 unit 0 family ethernet-switching port-mode trunk
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members thirdPartyDMZ
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members Bridged_DMZ
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members PIX-Failover
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members PIX-Stateful
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members bridged-ezvpninternal
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members PIXVPN-Failover
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members PIXVPN-Stateful
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members F5INT-Failover
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members f5pe01a-failover
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members sabrix-multicast
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members bridged-LWAPPwireless
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members FieldGuest
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members juniper-ha
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members juniper-fab
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members fortigate310-ha
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members dmz-iaai2
+set interfaces xe-16/0/2 unit 0 family ethernet-switching vlan members unused-cstp
+set interfaces xe-16/0/3 description net.2.nx9504a.e1/33
+set interfaces xe-16/0/3 unit 0 family inet address 10.0.254.73/30
+set interfaces xe-16/0/4 description net.7.ar7508b.eth3-2
+set interfaces xe-16/0/4 unit 0 family inet address 10.0.254.173/30
+set interfaces xe-16/0/5 description net.6.ar7508a.eth4-2
+set interfaces xe-16/0/5 unit 0 family inet address 10.0.254.169/30
+set interfaces xe-16/0/6 description net.1.mdf2a-7050-1b.e49
+set interfaces xe-16/0/6 ether-options 802.3ad ae8
+set interfaces xe-16/0/7 description ar7508b.3/1
+set interfaces xe-16/0/7 ether-options 802.3ad ae1
+set interfaces xe-17/0/2 description net.2.mdf1-idfa-xe-0/0/35
+set interfaces xe-17/0/2 unit 0 family inet address 10.0.254.141/30
+set interfaces xe-17/0/3 description net.2.mdf1-idfa-xe-0/0/35
+set interfaces xe-17/0/3 unit 0 family inet address 10.0.254.133/30
+set interfaces xe-17/0/4 unit 0 family inet address 10.254.254.37/30
+set interfaces xe-17/0/5 description net.sch-core-xe-1-0-21.SAFEDRKCOLCOL00002.ch21
+set interfaces xe-17/0/5 unit 0 family inet address 10.254.254.45/30
+set interfaces xe-17/0/6 description net.2.asr1006a-te0/0/0
+set interfaces xe-17/0/6 unit 0 family inet address 10.0.254.193/30
+set interfaces xe-17/0/7 description ar7508b.4/1
+set interfaces xe-17/0/7 ether-options 802.3ad ae1
+set interfaces ge-22/0/0 description net.1.mdf1-6513b.3/11
+set interfaces ge-22/0/0 ether-options 802.3ad ae7
+set interfaces ge-22/0/1 description net.2.mdf1-6513b.3/12
+set interfaces ge-22/0/1 ether-options 802.3ad ae7
+set interfaces ge-22/0/2 description net.5.saw-fgt1000c.wan2
+set interfaces ge-22/0/2 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ge-22/0/3 description net.4.saw-fgt1000c.port4
+set interfaces ge-22/0/3 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-22/0/3 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces ge-22/0/3 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces ge-22/0/3 unit 0 family ethernet-switching vlan members BelronBYOD
+set interfaces ge-22/0/4 description net.3.f5lpi01a.1.2
+set interfaces ge-22/0/4 ether-options 802.3ad ae16
+set interfaces ge-22/0/5 description net.3.f5lpi01b.1.2
+set interfaces ge-22/0/5 ether-options 802.3ad ae17
+set interfaces ge-22/0/6 description net.3.f5gpi01.1.2
+set interfaces ge-22/0/6 ether-options 802.3ad ae20
+set interfaces ge-22/0/7 description net.1.f5di01.mgmt
+set interfaces ge-22/0/7 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-22/0/8 description "reservered for f5pe01a"
+set interfaces ge-22/0/9 description "reservered for f5pe01a"
+set interfaces ge-22/0/10 description "reservered for f5pe01a"
+set interfaces ge-22/0/11 description net.3.f5di01.1.3
+set interfaces ge-22/0/11 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-22/0/11 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ge-22/0/11 unit 0 family ethernet-switching vlan members AIX-Dev
+set interfaces ge-22/0/11 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ge-22/0/11 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-22/0/12 description net.2.ns1.lan2
+set interfaces ge-22/0/12 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-22/0/13 description net.6.saw-fgt1000c.port5
+set interfaces ge-22/0/13 ether-options 802.3ad ae21
+set interfaces ge-22/0/32 description saw-core-asr1001b.po1
+set interfaces ge-22/0/32 ether-options 802.3ad ae23
+set interfaces ge-22/0/33 description asa5545b
+set interfaces ge-22/0/33 unit 0 family ethernet-switching vlan members usaa-asa
+set interfaces ge-22/0/34 description saw-core-asr1001d.po1
+set interfaces ge-22/0/34 ether-options 802.3ad ae25
+set interfaces ge-22/0/40 description net.1.saw-core-2821-ge-0-0.direct
+set interfaces ge-22/0/40 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ge-22/0/41 description net.2.saw-core-2821-ge-0-1.direct
+set interfaces ge-22/0/41 unit 0 family inet address 10.0.254.181/30
+set interfaces ge-22/0/42 description net.2.7508a-ma2/1
+set interfaces ge-22/0/42 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-22/0/43 description net.2.7508b-ma2/1
+set interfaces ge-22/0/43 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-22/0/44 description OPEN-SINGLE
+set interfaces ge-22/0/45 description net.3.border1.ge0/0/1
+set interfaces ge-22/0/45 ether-options 802.3ad ae22
+set interfaces ge-22/0/46 description net.2.webgate1a-1.direct
+set interfaces ge-22/0/46 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-22/0/47 description net.1.asr1006a.mgmt
+set interfaces ge-22/0/47 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/0 description net.3.mdf1-6513b.4/11
+set interfaces ge-23/0/0 ether-options 802.3ad ae7
+set interfaces ge-23/0/1 description net.4.mdf1-6513b.4/12
+set interfaces ge-23/0/1 ether-options 802.3ad ae7
+set interfaces ge-23/0/2 description net.2.saw-core-wvpn1.0/1
+set interfaces ge-23/0/2 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-23/0/3 description net.1.f5lpi01b.mgmt
+set interfaces ge-23/0/3 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/4 description net.5.f5lpi01a.1.4
+set interfaces ge-23/0/4 ether-options 802.3ad ae18
+set interfaces ge-23/0/5 description net.5.f5lpi01b.1.4
+set interfaces ge-23/0/5 ether-options 802.3ad ae19
+set interfaces ge-23/0/6 description net.0.pl1000.direct
+set interfaces ge-23/0/6 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/7 description net.1.f5de01.mgmt
+set interfaces ge-23/0/7 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/8 description "reservered for f5de01"
+set interfaces ge-23/0/9 description "reservered for f5de01"
+set interfaces ge-23/0/10 description net.2.dns-manager.lan2
+set interfaces ge-23/0/10 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-23/0/11 description net.2.ns01.lan2
+set interfaces ge-23/0/11 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-23/0/12 description net.2.ns02.lan2
+set interfaces ge-23/0/12 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-23/0/13 description asrvpn2.ge0/0/1
+set interfaces ge-23/0/13 unit 0 family inet address 10.0.254.129/30
+set interfaces ge-23/0/33 description dynatrace
+set interfaces ge-23/0/33 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-23/0/35 description dynatrace
+set interfaces ge-23/0/35 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ge-23/0/40 description net.1.srx5600-c1n1.fxp0
+set interfaces ge-23/0/40 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/43 description net.3.magvpn1-ext
+set interfaces ge-23/0/43 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ge-23/0/44 description net.2.magvpn1-int
+set interfaces ge-23/0/44 unit 0 family inet address 10.0.254.189/30
+set interfaces ge-23/0/45 description net.1.magvpn1-mgmt
+set interfaces ge-23/0/45 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/46 description net.5.wvpn-wf-con.port8
+set interfaces ge-23/0/46 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ge-23/0/47 description net.2.wvpn-wf-ext.port2
+set interfaces ge-23/0/47 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ae0 description unused
+set interfaces ae0 aggregated-ether-options lacp active
+set interfaces ae0 aggregated-ether-options lacp periodic fast
+set interfaces ae0 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae0 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae0 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae0 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae0 unit 0 family ethernet-switching vlan members tel-ctrl-a
+set interfaces ae1 description ar7508.PO2.MLAG1
+set interfaces ae1 aggregated-ether-options lacp active
+set interfaces ae1 aggregated-ether-options lacp periodic slow
+set interfaces ae1 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae1 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae1 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae1 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae1 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ae1 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae1 unit 0 family ethernet-switching vlan members systembuild
+set interfaces ae1 unit 0 family ethernet-switching vlan members verint
+set interfaces ae1 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae1 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae1 unit 0 family ethernet-switching vlan members facilities
+set interfaces ae1 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ae1 unit 0 family ethernet-switching vlan members drac
+set interfaces ae1 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae1 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae1 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae1 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae1 unit 0 family ethernet-switching vlan members Core
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae1 unit 0 family ethernet-switching vlan members security-camera
+set interfaces ae1 unit 0 family ethernet-switching vlan members san
+set interfaces ae1 unit 0 family ethernet-switching vlan members mainframe
+set interfaces ae1 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces ae1 unit 0 family ethernet-switching vlan members AIX-Dev
+set interfaces ae1 unit 0 family ethernet-switching vlan members AIX-Prod
+set interfaces ae1 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces ae1 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces ae1 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces ae1 unit 0 family ethernet-switching vlan members f5di01-vips
+set interfaces ae1 unit 0 family ethernet-switching vlan members SIP-Level3
+set interfaces ae1 unit 0 family ethernet-switching vlan members f5lpi01-vips
+set interfaces ae1 unit 0 family ethernet-switching vlan members f5lpi01-vips-240
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-192
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-193
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-43
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-194
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-195
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-41
+set interfaces ae1 unit 0 family ethernet-switching vlan members virtual-desktop-42
+set interfaces ae1 unit 0 family ethernet-switching vlan members tel-ctrl-a
+set interfaces ae1 unit 0 family ethernet-switching vlan members tel-ctrl-b
+set interfaces ae1 unit 0 family ethernet-switching vlan members Sawmill-WAAS
+set interfaces ae1 unit 0 family ethernet-switching vlan members f5di01-vips-244
+set interfaces ae1 unit 0 family ethernet-switching vlan members telecom-lab
+set interfaces ae1 unit 0 family ethernet-switching vlan members thirdPartyDMZ
+set interfaces ae1 unit 0 family ethernet-switching vlan members AS400-HMC
+set interfaces ae1 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces ae1 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ae1 unit 0 family ethernet-switching vlan members PIX-Failover
+set interfaces ae1 unit 0 family ethernet-switching vlan members PIX-Stateful
+set interfaces ae1 unit 0 family ethernet-switching vlan members bridged-ezvpninternal
+set interfaces ae1 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces ae1 unit 0 family ethernet-switching vlan members PIXVPN-Failover
+set interfaces ae1 unit 0 family ethernet-switching vlan members PIXVPN-Stateful
+set interfaces ae1 unit 0 family ethernet-switching vlan members bridged-LWAPPwireless
+set interfaces ae1 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces ae1 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces ae1 unit 0 family ethernet-switching vlan members FieldGuest
+set interfaces ae1 unit 0 family ethernet-switching vlan members juniper-ha
+set interfaces ae1 unit 0 family ethernet-switching vlan members juniper-fab
+set interfaces ae1 unit 0 family ethernet-switching vlan members internal-real-ip
+set interfaces ae1 unit 0 family ethernet-switching vlan members BelronBYOD
+set interfaces ae2 description mdf2a.ae0
+set interfaces ae2 aggregated-ether-options lacp active
+set interfaces ae2 aggregated-ether-options lacp periodic fast
+set interfaces ae2 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae2 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae2 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae2 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ae2 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae2 unit 0 family ethernet-switching vlan members systembuild
+set interfaces ae2 unit 0 family ethernet-switching vlan members verint
+set interfaces ae2 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae2 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae2 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae2 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae2 unit 0 family ethernet-switching vlan members drac
+set interfaces ae2 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae2 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae2 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ae2 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae2 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae2 unit 0 family ethernet-switching vlan members san
+set interfaces ae2 unit 0 family ethernet-switching vlan members security-camera
+set interfaces ae2 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae2 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces ae2 unit 0 family ethernet-switching vlan members facilities
+set interfaces ae2 unit 0 family ethernet-switching vlan members mainframe
+set interfaces ae3 description mdf2b.ae0
+set interfaces ae3 aggregated-ether-options lacp active
+set interfaces ae3 aggregated-ether-options lacp periodic fast
+set interfaces ae3 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae3 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae3 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae3 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ae3 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae3 unit 0 family ethernet-switching vlan members systembuild
+set interfaces ae3 unit 0 family ethernet-switching vlan members verint
+set interfaces ae3 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae3 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae3 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae3 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae3 unit 0 family ethernet-switching vlan members drac
+set interfaces ae3 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae3 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae3 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ae3 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae3 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae3 unit 0 family ethernet-switching vlan members san
+set interfaces ae3 unit 0 family ethernet-switching vlan members security-camera
+set interfaces ae3 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae3 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces ae3 unit 0 family ethernet-switching vlan members Core
+set interfaces ae3 unit 0 family ethernet-switching vlan members facilities
+set interfaces ae4 description mdf3a.ae0
+set interfaces ae4 aggregated-ether-options lacp active
+set interfaces ae4 aggregated-ether-options lacp periodic fast
+set interfaces ae4 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae4 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae4 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ae4 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae4 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae4 unit 0 family ethernet-switching vlan members systembuild
+set interfaces ae4 unit 0 family ethernet-switching vlan members verint
+set interfaces ae4 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae4 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae4 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae4 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae4 unit 0 family ethernet-switching vlan members drac
+set interfaces ae4 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae4 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae4 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ae4 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae4 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae4 unit 0 family ethernet-switching vlan members AIX-Dev
+set interfaces ae4 unit 0 family ethernet-switching vlan members AIX-Prod
+set interfaces ae4 unit 0 family ethernet-switching vlan members Core
+set interfaces ae4 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces ae4 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces ae4 unit 0 family ethernet-switching vlan members san
+set interfaces ae4 unit 0 family ethernet-switching vlan members facilities
+set interfaces ae4 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces ae4 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae5 description mdf3b.ae0
+set interfaces ae5 aggregated-ether-options lacp active
+set interfaces ae5 aggregated-ether-options lacp periodic fast
+set interfaces ae5 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae5 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae5 unit 0 family ethernet-switching vlan members dev-qa
+set interfaces ae5 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae5 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae5 unit 0 family ethernet-switching vlan members systembuild
+set interfaces ae5 unit 0 family ethernet-switching vlan members verint
+set interfaces ae5 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae5 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae5 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae5 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae5 unit 0 family ethernet-switching vlan members drac
+set interfaces ae5 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae5 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae5 unit 0 family ethernet-switching vlan members windows-dev
+set interfaces ae5 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae5 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae5 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces ae5 unit 0 family ethernet-switching vlan members AIX-Prod
+set interfaces ae5 unit 0 family ethernet-switching vlan members AIX-Dev
+set interfaces ae5 unit 0 family ethernet-switching vlan members san
+set interfaces ae5 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces ae5 unit 0 family ethernet-switching vlan members Core
+set interfaces ae5 unit 0 family ethernet-switching vlan members facilities
+set interfaces ae5 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces ae5 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae6 description mdf1-6513a.po30
+set interfaces ae6 mtu 9216
+set interfaces ae6 aggregated-ether-options lacp active
+set interfaces ae6 aggregated-ether-options lacp periodic fast
+set interfaces ae6 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae6 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae6 unit 0 family ethernet-switching vlan members core-mdf1a-l3
+set interfaces ae6 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae6 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae6 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ae6 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces ae6 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces ae6 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae6 unit 0 family ethernet-switching vlan members verint
+set interfaces ae6 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae6 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae6 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae6 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae6 unit 0 family ethernet-switching vlan members san
+set interfaces ae6 unit 0 family ethernet-switching vlan members security-camera
+set interfaces ae6 unit 0 family ethernet-switching vlan members Core
+set interfaces ae6 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces ae6 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces ae6 unit 0 family ethernet-switching vlan members f5pe01a-failover
+set interfaces ae6 unit 0 family ethernet-switching vlan members SAW-Routing-A
+set interfaces ae6 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces ae6 unit 0 family ethernet-switching vlan members AIX-Prod
+set interfaces ae6 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces ae6 unit 0 family ethernet-switching vlan members tel-ctrl-a
+set interfaces ae6 unit 0 family ethernet-switching vlan members tel-ctrl-b
+set interfaces ae6 unit 0 family ethernet-switching vlan members thirdPartyDMZ
+set interfaces ae6 unit 0 family ethernet-switching vlan members internal-real-ip
+set interfaces ae6 unit 0 family ethernet-switching vlan members Sawmill-WAAS
+set interfaces ae6 unit 0 family ethernet-switching vlan members PIX-Failover
+set interfaces ae6 unit 0 family ethernet-switching vlan members PIX-Stateful
+set interfaces ae6 unit 0 family ethernet-switching vlan members bridged-ezvpninternal
+set interfaces ae6 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces ae6 unit 0 family ethernet-switching vlan members PIXVPN-Failover
+set interfaces ae6 unit 0 family ethernet-switching vlan members PIXVPN-Stateful
+set interfaces ae6 unit 0 family ethernet-switching vlan members bridged-LWAPPwireless
+set interfaces ae6 unit 0 family ethernet-switching vlan members FieldGuest
+set interfaces ae6 unit 0 family ethernet-switching vlan members juniper-ha
+set interfaces ae6 unit 0 family ethernet-switching vlan members juniper-fab
+set interfaces ae6 unit 0 family ethernet-switching vlan members fortigate310-ha
+set interfaces ae6 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces ae6 unit 0 family ethernet-switching vlan members SIP-Level3
+set interfaces ae6 unit 0 family ethernet-switching vlan members AS400-HMC
+set interfaces ae6 unit 0 family ethernet-switching vlan members Bridged_DMZ
+set interfaces ae6 unit 0 family ethernet-switching vlan members F5INT-Failover
+set interfaces ae6 unit 0 family ethernet-switching vlan members sabrix-multicast
+set interfaces ae6 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces ae6 unit 0 family ethernet-switching vlan members dmz-iaai2
+set interfaces ae6 unit 0 family ethernet-switching native-vlan-id 1
+set interfaces ae7 description mdf1-6513b.po30
+set interfaces ae7 mtu 9216
+set interfaces ae7 aggregated-ether-options lacp active
+set interfaces ae7 aggregated-ether-options lacp periodic fast
+set interfaces ae7 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae7 unit 0 family ethernet-switching vlan members unused-native
+set interfaces ae7 unit 0 family ethernet-switching vlan members DMZ1-int
+set interfaces ae7 unit 0 family ethernet-switching vlan members ServerDMZ
+set interfaces ae7 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ae7 unit 0 family ethernet-switching vlan members CorpGuest
+set interfaces ae7 unit 0 family ethernet-switching vlan members KioskWireless
+set interfaces ae7 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae7 unit 0 family ethernet-switching vlan members verint
+set interfaces ae7 unit 0 family ethernet-switching vlan members telecom
+set interfaces ae7 unit 0 family ethernet-switching vlan members windows-heardbeat
+set interfaces ae7 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae7 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae7 unit 0 family ethernet-switching vlan members san
+set interfaces ae7 unit 0 family ethernet-switching vlan members core-mdf1a-l3
+set interfaces ae7 unit 0 family ethernet-switching vlan members security-camera
+set interfaces ae7 unit 0 family ethernet-switching vlan members Core
+set interfaces ae7 unit 0 family ethernet-switching vlan members Bridged_internal
+set interfaces ae7 unit 0 family ethernet-switching vlan members f5dmz
+set interfaces ae7 unit 0 family ethernet-switching vlan members f5pe01a-failover
+set interfaces ae7 unit 0 family ethernet-switching vlan members SAW-Routing-A
+set interfaces ae7 unit 0 family ethernet-switching vlan members aix-h2
+set interfaces ae7 unit 0 family ethernet-switching vlan members AIX-Prod
+set interfaces ae7 unit 0 family ethernet-switching vlan members aix-h1
+set interfaces ae7 unit 0 family ethernet-switching vlan members tel-ctrl-b
+set interfaces ae7 unit 0 family ethernet-switching vlan members tel-ctrl-a
+set interfaces ae7 unit 0 family ethernet-switching vlan members thirdPartyDMZ
+set interfaces ae7 unit 0 family ethernet-switching vlan members internal-real-ip
+set interfaces ae7 unit 0 family ethernet-switching vlan members Sawmill-WAAS
+set interfaces ae7 unit 0 family ethernet-switching vlan members PIX-Failover
+set interfaces ae7 unit 0 family ethernet-switching vlan members PIX-Stateful
+set interfaces ae7 unit 0 family ethernet-switching vlan members bridged-ezvpninternal
+set interfaces ae7 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces ae7 unit 0 family ethernet-switching vlan members PIXVPN-Failover
+set interfaces ae7 unit 0 family ethernet-switching vlan members PIXVPN-Stateful
+set interfaces ae7 unit 0 family ethernet-switching vlan members bridged-LWAPPwireless
+set interfaces ae7 unit 0 family ethernet-switching vlan members FieldGuest
+set interfaces ae7 unit 0 family ethernet-switching vlan members juniper-ha
+set interfaces ae7 unit 0 family ethernet-switching vlan members juniper-fab
+set interfaces ae7 unit 0 family ethernet-switching vlan members fortigate310-ha
+set interfaces ae7 unit 0 family ethernet-switching vlan members core-mdf1b-l3
+set interfaces ae7 unit 0 family ethernet-switching vlan members giantglass-dmz
+set interfaces ae7 unit 0 family ethernet-switching vlan members SIP-Level3
+set interfaces ae7 unit 0 family ethernet-switching vlan members Bridged_DMZ
+set interfaces ae7 unit 0 family ethernet-switching vlan members F5INT-Failover
+set interfaces ae7 unit 0 family ethernet-switching vlan members sabrix-multicast
+set interfaces ae7 unit 0 family ethernet-switching vlan members dmz-iaai1
+set interfaces ae7 unit 0 family ethernet-switching vlan members dmz-iaai2
+set interfaces ae7 unit 0 family ethernet-switching native-vlan-id 1
+set interfaces ae8 description mdf2-7050-1-po2-mlag2
+set interfaces ae8 aggregated-ether-options lacp active
+set interfaces ae8 aggregated-ether-options lacp periodic fast
+set interfaces ae8 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae8 unit 0 family ethernet-switching vlan members NetworkMGMT-DC
+set interfaces ae8 unit 0 family ethernet-switching vlan members drac
+set interfaces ae8 unit 0 family ethernet-switching vlan members svcconsole
+set interfaces ae8 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae8 unit 0 family ethernet-switching vlan members vkernel-vmotion
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-41
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-42
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-43
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-01
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-192
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-193
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-194
+set interfaces ae8 unit 0 family ethernet-switching vlan members virtual-desktop-195
+set interfaces ae16 description f5lpi01a-virtual_ip_trunk
+set interfaces ae16 aggregated-ether-options lacp active
+set interfaces ae16 aggregated-ether-options lacp periodic fast
+set interfaces ae16 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae16 unit 0 family ethernet-switching vlan members f5lpi01-vips
+set interfaces ae16 unit 0 family ethernet-switching vlan members f5lpi01-vips-240
+set interfaces ae17 description f5lpi01b-virtual_ip_trunk
+set interfaces ae17 aggregated-ether-options lacp active
+set interfaces ae17 aggregated-ether-options lacp periodic fast
+set interfaces ae17 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae17 unit 0 family ethernet-switching vlan members f5lpi01-vips
+set interfaces ae17 unit 0 family ethernet-switching vlan members f5lpi01-vips-240
+set interfaces ae18 description f5lpi01a-backend_trunk
+set interfaces ae18 aggregated-ether-options lacp active
+set interfaces ae18 aggregated-ether-options lacp periodic fast
+set interfaces ae18 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae18 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae18 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae18 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae19 description f5lpi01b-backend_trunk
+set interfaces ae19 aggregated-ether-options lacp active
+set interfaces ae19 aggregated-ether-options lacp periodic fast
+set interfaces ae19 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae19 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae19 unit 0 family ethernet-switching vlan members legacy-prod
+set interfaces ae19 unit 0 family ethernet-switching vlan members windows-production
+set interfaces ae20 description f5gpi01-gtm
+set interfaces ae20 aggregated-ether-options lacp active
+set interfaces ae20 aggregated-ether-options lacp periodic fast
+set interfaces ae20 unit 0 family ethernet-switching vlan members network-servers
+set interfaces ae21 description "cmh-saw-fgt1000c ae0"
+set interfaces ae21 disable
+set interfaces ae21 aggregated-ether-options lacp active
+set interfaces ae21 aggregated-ether-options lacp periodic fast
+set interfaces ae21 unit 0 family inet address 10.0.254.198/30
+set interfaces ae22 description saw-core-border1.po1
+set interfaces ae22 aggregated-ether-options lacp active
+set interfaces ae22 aggregated-ether-options lacp periodic fast
+set interfaces ae22 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae22 unit 0 family ethernet-switching vlan members bridged-external
+set interfaces ae22 unit 0 family ethernet-switching vlan members bridged-ezvpnexternal
+set interfaces ae23 description saw-core-asr1001b.po1
+set interfaces ae23 aggregated-ether-options lacp active
+set interfaces ae23 aggregated-ether-options lacp periodic slow
+set interfaces ae23 unit 0 family inet address 10.0.254.105/30
+set interfaces ae25 description saw-core-asr1001d.po1
+set interfaces ae25 aggregated-ether-options lacp active
+set interfaces ae25 aggregated-ether-options lacp periodic slow
+set interfaces ae25 unit 0 family inet address 10.0.254.109/30
+set interfaces lo0 unit 0 description saw-core-ex8208vc-lo0
+set interfaces lo0 unit 0 family inet filter input local-access-control
+set interfaces lo0 unit 0 family inet address 10.0.254.20/32 primary
+set interfaces lo0 unit 0 family inet address 10.254.252.100/32
+set interfaces vlan unit 2 family inet address 10.0.0.1/22
+deactivate interfaces vlan unit 2
+set interfaces vlan unit 12 family inet address 10.0.12.1/24
+deactivate interfaces vlan unit 12
+set interfaces vlan unit 13 family inet address 10.0.13.1/24
+deactivate interfaces vlan unit 13
+set interfaces vlan unit 14 family inet address 10.0.14.1/24
+deactivate interfaces vlan unit 14
+set interfaces vlan unit 16 family inet address 10.0.16.1/24
+deactivate interfaces vlan unit 16
+set interfaces vlan unit 18 family inet address 10.0.18.1/24
+deactivate interfaces vlan unit 18
+set interfaces vlan unit 20 family inet address 10.0.20.1/24
+deactivate interfaces vlan unit 20
+set interfaces vlan unit 22 family inet address 10.0.22.1/24
+deactivate interfaces vlan unit 22
+set interfaces vlan unit 24 family inet address 10.0.24.1/24
+deactivate interfaces vlan unit 24
+set interfaces vlan unit 26 family inet address 10.0.28.1/22
+deactivate interfaces vlan unit 26
+set interfaces vlan unit 32 family inet address 10.0.32.1/22
+deactivate interfaces vlan unit 32
+set interfaces vlan unit 36 family inet address 10.0.36.1/22
+deactivate interfaces vlan unit 36
+set interfaces vlan unit 41 family inet address 10.0.41.1/24
+deactivate interfaces vlan unit 41
+set interfaces vlan unit 42 family inet address 10.0.42.1/24
+deactivate interfaces vlan unit 42
+set interfaces vlan unit 43 family inet address 10.0.43.1/24
+deactivate interfaces vlan unit 43
+set interfaces vlan unit 46 family inet address 10.0.46.1/24
+deactivate interfaces vlan unit 46
+set interfaces vlan unit 58 family inet address 10.0.58.1/24
+deactivate interfaces vlan unit 58
+set interfaces vlan unit 192 family inet address 10.0.192.1/24
+deactivate interfaces vlan unit 192
+set interfaces vlan unit 193 family inet address 10.0.193.1/24
+deactivate interfaces vlan unit 193
+set interfaces vlan unit 194 family inet address 10.0.194.1/24
+deactivate interfaces vlan unit 194
+set interfaces vlan unit 195 family inet address 10.0.195.1/24
+deactivate interfaces vlan unit 195
+set interfaces vlan unit 240 family inet address 10.0.240.1/24
+deactivate interfaces vlan unit 240
+set interfaces vlan unit 252 family inet address 10.0.252.1/24
+deactivate interfaces vlan unit 252
+set interfaces vlan unit 256 family inet address 10.1.129.1/24
+deactivate interfaces vlan unit 256
+set interfaces vlan unit 257 family inet address 10.1.132.1/24
+deactivate interfaces vlan unit 257
+set interfaces vlan unit 395 bandwidth 4g
+set interfaces vlan unit 395 family inet address 10.0.254.201/30
+set interfaces vlan unit 396 bandwidth 4g
+set interfaces vlan unit 396 family inet address 10.0.254.205/30
+set interfaces vlan unit 979 family inet address 10.0.254.89/29
+set forwarding-options helpers bootp interface vlan.41 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.41 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.42 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.42 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.43 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.43 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.46 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.46 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.192 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.192 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.193 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.193 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.194 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.194 server 10.7.128.115
+set forwarding-options helpers bootp interface vlan.195 server 10.0.128.115
+set forwarding-options helpers bootp interface vlan.195 server 10.7.128.115
+set snmp name saw-core-ex8208vc
+set snmp location saw-core
+set snmp v3 usm local-engine user ZenossSNMPv3 authentication-sha authentication-key"$9$KmyM87s24UikvW7VwsJZ69CA1RylK8xNcSlMXxwsz3n6tuOBEhyl0ORSrK8LJGUikP/CtIhSmfyleMXxqmPTQn9Apu1RtpM8LX-dP5TF39CtuEhrpuWLXNbwYgoGHq5QFnCt4aGikqQz9ApBcyvWLdVYuO-Vs2aJ36/ABIKM87NbMW-wYgJZHqmfn/"
+set snmp v3 usm local-engine user ZenossSNMPv3 privacy-aes128 privacy-key"$9$OrWq1IcKvLx7VAp7-bsJZtu0OhSylKWX7hcVwY4ZGtu0ISreK8XNdrlLNdboa69Ctu1hSr8LNcSVwY2GUp0OBSrLxNws4-dgJGDmPTz36uOylKvLx9A0IEhKv7-VYJGHkP3nCQzhSrlMWxNdVgojHqzn/YgGikmTQ69AuRhSyKv8XleMXN-wsJGDHkP"
+set snmp v3 vacm security-to-group security-model usm security-name ZenossSNMPv3 group ReadOnly
+set snmp v3 vacm access group ReadOnly default-context-prefix security-model usm security-level privacy read-view readAll
+set snmp engine-id use-default-ip-address
+set snmp view readAll oid .1 include
+set snmp community Clrglazz authorization read-only
+set snmp community Clrglazz clients 10.0.128.0/24
+set snmp trap-group space targets 10.0.128.38
+set snmp trap-group space targets 10.0.128.39
+set routing-options nonstop-routing
+set routing-options static route 10.0.0.0/8 reject
+set routing-options static route 10.1.8.0/21 next-hop 10.0.254.190
+set routing-options static route 172.31.20.0/23 next-hop 10.0.254.90
+set routing-options static route 172.16.8.0/23 next-hop 10.0.254.90
+set routing-options router-id 10.0.252.1
+set routing-options forwarding-table export ECMP
+set protocols msdp group Safelite mode mesh-group
+set protocols msdp group Safelite local-address 10.0.254.20
+set protocols msdp group Safelite peer 10.7.254.21
+set protocols msdp group Safelite-Distribution local-address 10.0.254.20
+set protocols msdp group Safelite-Distribution peer 10.3.0.141
+set protocols msdp group Safelite-Distribution peer 10.3.0.142
+set protocols ospf export ospf_redist
+set protocols ospf reference-bandwidth 100g
+set protocols ospf area 0.0.0.0 interface vlan.395 interface-type p2p
+set protocols ospf area 0.0.0.0 interface vlan.395 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface vlan.252 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.252
+set protocols ospf area 0.0.0.0 interface vlan.396 interface-type p2p
+set protocols ospf area 0.0.0.0 interface vlan.396 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface vlan.14 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.14
+set protocols ospf area 0.0.0.0 interface vlan.12 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.12
+set protocols ospf area 0.0.0.0 interface vlan.16 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.16
+set protocols ospf area 0.0.0.0 interface vlan.18 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.18
+set protocols ospf area 0.0.0.0 interface vlan.13 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.13
+set protocols ospf area 0.0.0.0 interface vlan.256 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.256
+set protocols ospf area 0.0.0.0 interface vlan.41 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.41
+set protocols ospf area 0.0.0.0 interface vlan.42 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.42
+set protocols ospf area 0.0.0.0 interface vlan.43 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.43
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/6.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface vlan.240 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.240
+set protocols ospf area 0.0.0.0 interface vlan.22 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.22
+set protocols ospf area 0.0.0.0 interface vlan.26 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.26
+set protocols ospf area 0.0.0.0 interface vlan.46 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.46
+set protocols ospf area 0.0.0.0 interface vlan.24 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.24
+set protocols ospf area 0.0.0.0 interface vlan.58 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.58
+set protocols ospf area 0.0.0.0 interface vlan.2 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.2
+set protocols ospf area 0.0.0.0 interface vlan.20 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.20
+set protocols ospf area 0.0.0.0 interface vlan.32 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.32
+set protocols ospf area 0.0.0.0 interface vlan.36 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.36
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+set protocols ospf area 0.0.0.0 interface ae21.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae21.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface ae21.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface ae21.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface ae21.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ge-23/0/44.0 passive
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 authentication md5 100 key
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface ge-22/0/41.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/6.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface vlan.257 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.257
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 authentication md5 100 key"
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/4.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/4.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface vlan.192 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.192
+set protocols ospf area 0.0.0.0 interface vlan.193 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.193
+set protocols ospf area 0.0.0.0 interface vlan.194 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.194
+set protocols ospf area 0.0.0.0 interface vlan.195 passive
+deactivate protocols ospf area 0.0.0.0 interface vlan.195
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-1/0/5.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-17/0/5.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/5.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/4.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/5.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-1/0/2.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-1/0/2.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-1/0/3.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-1/0/3.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-17/0/2.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-17/0/2.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-17/0/3.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-17/0/3.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface ae23.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae23.0 authentication md5 100 key"$9$f536ApB1EyfTIEhSW8xNd"
+set protocols ospf area 0.0.0.0 interface vlan.979 interface-type p2p
+set protocols ospf area 0.0.0.0 interface vlan.979 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface ge-7/0/13.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface ge-23/0/13.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 authentication md5 100 key""
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 bfd-liveness-detection version 1
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 bfd-liveness-detection minimum-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 bfd-liveness-detection minimum-receive-interval 100
+set protocols ospf area 0.0.0.0 interface xe-16/0/3.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ae25.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae25.0 authentication md5 100 key""
+set protocols pim rp local family inet address 10.254.252.100
+set protocols pim rp static address 10.254.252.100
+set protocols pim interface all mode sparse
+set protocols igmp-snooping vlan all
+set protocols igmp-snooping vlan juniper-ha disable
+set protocols igmp-snooping vlan juniper-fab disable
+set protocols rstp bridge-priority 4k
+set protocols rstp interface ge-6/0/7.0 edge
+set protocols rstp interface ge-6/0/8.0 edge
+set protocols rstp interface ge-6/0/9.0 edge
+set protocols rstp interface ge-6/0/11.0 edge
+set protocols rstp interface ge-6/0/12.0 edge
+set protocols rstp interface ge-7/0/7.0 edge
+set protocols rstp interface ge-7/0/8.0 edge
+set protocols rstp interface ge-7/0/9.0 edge
+set protocols rstp interface ge-7/0/10.0 edge
+set protocols rstp interface ge-7/0/11.0 edge
+set protocols rstp interface ge-7/0/12.0 edge
+set protocols rstp interface ge-22/0/7.0 edge
+set protocols rstp interface ge-23/0/7.0 edge
+set protocols rstp interface ae0.0 mode point-to-point
+set protocols rstp interface ae1.0 mode point-to-point
+set protocols rstp interface ae2.0 mode point-to-point
+set protocols rstp interface ae3.0 mode point-to-point
+set protocols rstp interface ae4.0 mode point-to-point
+set protocols rstp interface ae5.0 mode point-to-point
+set protocols vstp force-version stp
+set protocols vstp vlan AIX-Prod bridge-priority 16k
+set protocols vstp vlan AS400-HMC bridge-priority 16k
+set protocols vstp vlan Bridged_DMZ bridge-priority 16k
+set protocols vstp vlan Bridged_internal bridge-priority 16k
+set protocols vstp vlan Core bridge-priority 16k
+set protocols vstp vlan CorpGuest bridge-priority 16k
+set protocols vstp vlan DMZ1-int bridge-priority 16k
+set protocols vstp vlan F5INT-Failover bridge-priority 16k
+set protocols vstp vlan FieldGuest bridge-priority 16k
+set protocols vstp vlan KioskWireless bridge-priority 16k
+set protocols vstp vlan PIX-Failover bridge-priority 16k
+set protocols vstp vlan PIX-Stateful bridge-priority 16k
+set protocols vstp vlan PIXVPN-Failover bridge-priority 16k
+set protocols vstp vlan PIXVPN-Stateful bridge-priority 16k
+set protocols vstp vlan SAW-Routing-A bridge-priority 16k
+set protocols vstp vlan SIP-Level3 bridge-priority 16k
+set protocols vstp vlan Sawmill-WAAS bridge-priority 16k
+set protocols vstp vlan ServerDMZ bridge-priority 16k
+set protocols vstp vlan aix-h1 bridge-priority 16k
+set protocols vstp vlan aix-h2 bridge-priority 16k
+set protocols vstp vlan bridged-LWAPPwireless bridge-priority 16k
+set protocols vstp vlan bridged-external bridge-priority 16k
+set protocols vstp vlan bridged-ezvpnexternal bridge-priority 16k
+set protocols vstp vlan bridged-ezvpninternal bridge-priority 16k
+set protocols vstp vlan core-mdf1a-l3 bridge-priority 16k
+set protocols vstp vlan core-mdf1b-l3 bridge-priority 16k
+set protocols vstp vlan dmz-iaai1 bridge-priority 16k
+set protocols vstp vlan dmz-iaai2 bridge-priority 16k
+set protocols vstp vlan f5dmz bridge-priority 16k
+set protocols vstp vlan f5pe01a-failover bridge-priority 16k
+set protocols vstp vlan fortigate310-ha bridge-priority 16k
+set protocols vstp vlan giantglass-dmz bridge-priority 16k
+set protocols vstp vlan internal-real-ip bridge-priority 16k
+set protocols vstp vlan juniper-fab bridge-priority 16k
+set protocols vstp vlan juniper-ha bridge-priority 16k
+set protocols vstp vlan legacy-prod bridge-priority 16k
+set protocols vstp vlan network-servers
+set protocols vstp vlan sabrix-multicast bridge-priority 16k
+set protocols vstp vlan san bridge-priority 16k
+set protocols vstp vlan security-camera bridge-priority 16k
+set protocols vstp vlan tel-ctrl-a bridge-priority 16k
+set protocols vstp vlan tel-ctrl-b bridge-priority 16k
+set protocols vstp vlan telecom bridge-priority 16k
+set protocols vstp vlan thirdPartyDMZ bridge-priority 16k
+set protocols vstp vlan unused-native bridge-priority 16k
+set protocols vstp vlan verint bridge-priority 16k
+set protocols vstp vlan virtual-desktop-01 bridge-priority 16k
+set protocols vstp vlan windows-heardbeat bridge-priority 16k
+set protocols lldp interface all
+set protocols mvrp interface ae4.0
+set protocols mvrp interface ae5.0
+set protocols mvrp interface ae2.0
+set protocols mvrp interface ae3.0
+set policy-options policy-statement ECMP then load-balance per-packet
+set policy-options policy-statement ospf_redist term static from protocol static
+set policy-options policy-statement ospf_redist term static from route-filter 10.1.8.0/21 exact
+set policy-options policy-statement ospf_redist term static then metric 100
+set policy-options policy-statement ospf_redist term static then external type 1
+set policy-options policy-statement ospf_redist term static then accept
+set policy-options policy-statement ospf_redist term reject then reject
+set class-of-service classifiers dscp dscp_ba forwarding-class network-control loss-priority low code-points nc1
+set class-of-service classifiers dscp dscp_ba forwarding-class network-control loss-priority low code-points nc2
+set class-of-service classifiers dscp dscp_ba forwarding-class voice loss-priority low code-points ef
+set class-of-service classifiers dscp dscp_ba forwarding-class voice-signaling loss-priority low code-points af31
+set class-of-service classifiers dscp dscp_ba forwarding-class best-effort loss-priority low code-points be
+set class-of-service classifiers dscp dscp_ba forwarding-class production-crit loss-priority low code-points af21
+set class-of-service classifiers dscp dscp_ba forwarding-class production-norm loss-priority low code-points af22
+set class-of-service drop-profiles WRED-1 interpolate fill-level 0
+set class-of-service drop-profiles WRED-1 interpolate fill-level 50
+set class-of-service drop-profiles WRED-1 interpolate fill-level 75
+set class-of-service drop-profiles WRED-1 interpolate fill-level 85
+set class-of-service drop-profiles WRED-1 interpolate fill-level 90
+set class-of-service drop-profiles WRED-1 interpolate fill-level 100
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 0
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 20
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 40
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 75
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 90
+set class-of-service drop-profiles WRED-1 interpolate drop-probability 100
+set class-of-service forwarding-classes class network-control queue-num 7
+set class-of-service forwarding-classes class voice queue-num 5
+set class-of-service forwarding-classes class best-effort queue-num 0
+set class-of-service forwarding-classes class voice-signaling queue-num 4
+set class-of-service forwarding-classes class production-crit queue-num 2
+set class-of-service forwarding-classes class production-norm queue-num 3
+set class-of-service interfaces xe-0/0/2 scheduler-map network-port-sched
+set class-of-service interfaces xe-0/0/4 scheduler-map network-port-sched
+set class-of-service interfaces xe-0/0/5 scheduler-map network-port-sched
+set class-of-service interfaces ge-1/0/2 scheduler-map network-port-sched
+set class-of-service interfaces ge-1/0/3 scheduler-map network-port-sched
+set class-of-service interfaces xe-1/0/4 scheduler-map network-port-sched
+set class-of-service interfaces xe-1/0/5 scheduler-map network-port-sched
+set class-of-service interfaces xe-1/0/6 scheduler-map network-port-sched
+set class-of-service interfaces ge-6/0/11 scheduler-map network-port-sched
+set class-of-service interfaces ge-7/0/3 scheduler-map network-port-sched
+set class-of-service interfaces ge-7/0/13 scheduler-map network-port-sched
+set class-of-service interfaces xe-16/0/2 scheduler-map network-port-sched
+set class-of-service interfaces xe-16/0/4 scheduler-map network-port-sched
+set class-of-service interfaces xe-16/0/5 scheduler-map network-port-sched
+set class-of-service interfaces ge-17/0/2 scheduler-map network-port-sched
+set class-of-service interfaces ge-17/0/3 scheduler-map network-port-sched
+set class-of-service interfaces xe-17/0/4 scheduler-map network-port-sched
+set class-of-service interfaces xe-17/0/5 scheduler-map network-port-sched
+set class-of-service interfaces xe-17/0/6 scheduler-map network-port-sched
+set class-of-service interfaces ge-22/0/11 scheduler-map network-port-sched
+set class-of-service interfaces ge-22/0/41 scheduler-map network-port-sched
+set class-of-service interfaces ge-23/0/44 scheduler-map network-port-sched
+set class-of-service interfaces ae1 scheduler-map network-port-sched
+set class-of-service interfaces ae1 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae2 scheduler-map network-port-sched
+set class-of-service interfaces ae2 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae3 scheduler-map network-port-sched
+set class-of-service interfaces ae3 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae4 scheduler-map network-port-sched
+set class-of-service interfaces ae4 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae5 scheduler-map network-port-sched
+set class-of-service interfaces ae5 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae6 scheduler-map network-port-sched
+set class-of-service interfaces ae7 scheduler-map network-port-sched
+set class-of-service interfaces ae7 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae8 scheduler-map network-port-sched
+set class-of-service interfaces ae9 scheduler-map network-port-sched
+set class-of-service interfaces ae9 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae10 scheduler-map network-port-sched
+set class-of-service interfaces ae10 unit 0 classifiers dscp dscp_ba
+set class-of-service interfaces ae16 scheduler-map network-port-sched
+set class-of-service interfaces ae17 scheduler-map network-port-sched
+set class-of-service interfaces ae18 scheduler-map network-port-sched
+set class-of-service interfaces ae19 scheduler-map network-port-sched
+set class-of-service interfaces ae20 scheduler-map network-port-sched
+set class-of-service interfaces ae22 scheduler-map network-port-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class network-control scheduler network-control-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class production-crit scheduler production-crit-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class production-norm scheduler production-norm-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class best-effort scheduler be-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class voice scheduler voice-sched
+set class-of-service scheduler-maps network-port-sched forwarding-class voice-signaling scheduler voice-signaling-sched
+set class-of-service schedulers network-control-sched buffer-size percent 5
+set class-of-service schedulers network-control-sched priority strict-high
+set class-of-service schedulers network-control-sched drop-profile-map loss-priority high protocol any drop-profile WRED-1
+set class-of-service schedulers voice-sched buffer-size percent 25
+set class-of-service schedulers voice-sched priority strict-high
+set class-of-service schedulers voice-signaling-sched buffer-size percent 5
+set class-of-service schedulers voice-signaling-sched priority strict-high
+set class-of-service schedulers production-crit-sched transmit-rate percent 30
+set class-of-service schedulers production-crit-sched buffer-size percent 30
+set class-of-service schedulers production-crit-sched priority low
+set class-of-service schedulers production-norm-sched transmit-rate percent 30
+set class-of-service schedulers production-norm-sched buffer-size percent 30
+set class-of-service schedulers production-norm-sched priority low
+set class-of-service schedulers be-sched transmit-rate remainder
+set class-of-service schedulers be-sched buffer-size remainder
+set class-of-service schedulers be-sched priority low
+set security ssh-known-hosts host 10.0.128.94 rsa-keyAAAAB3NzaC1yc2EAAAABIwAAAQEAlhsF0cIoIwZUsviz5lSqAceI0UjTHDqKxXCkYCwBWjiJoL3lVKhwfEf3Po11Nts5XkzqhEtMn7OczzDlWPZLcxP/1BN4Y5CBaGXuolcgswfB1jPxlRTLqG0OQ8Euzu/m2SMWwuUPjtmA8EPnbrPAuRMD7EBqDyW9mwvvapfnLHsy0d4AH33U84A2ejKMfwXy7zfNqJdiq/lyGmZ/Ixpeenf/XpSpcIIlZlF4mXYHQ024gulXWkwcyPp+YNyksND967UHemzbQfJYGmza8esxB1BvD5afKX4Owmb71S9fVSTbqS2qZuIzZsoJ8aPbYqghRpA/sbTixitCu4nLmxqifw==
+set security ssh-known-hosts host bounty.sag.asn,10.0.128.113 rsa-keyAAAAB3NzaC1yc2EAAAABIwAAAQEAtdtGLpbq+9u9GWGTGy/Zxix3MEy9C12ZG648Ahby1vKBvSMOkViyBBu23DueWSuEMT9HL+esc8cPSAwa57zQkxL8dUEdiPO3YQM9QuL7vIhzgKH1hsLw9OMuVVq+qsxKchQ4Je1Yp8PNadhvM5KxGOkLL0BZMsg3Ygz1x2qMSMmkGV9j3aj/4PRvdxzLlT9Sj/JuJn6Z/MpSjxAz0qDO83o+D8Vg0pYnWSI5RDkVxFVQRcNFufOugGoBe7qUQ5L0sevS8BWzYNDR585tWVYbYad8s5UFVHDtWiCSqbJJ7g2Ap20irB9BP4Y1KVtIZkt0LepBKIDqgwFHtLFwG8SVow==
+set firewall family inet filter local-access-control term terminal-access from source-address 206.131.211.0/24
+set firewall family inet filter local-access-control term terminal-access from source-address 10.0.128.0/24
+set firewall family inet filter local-access-control term terminal-access from protocol tcp
+set firewall family inet filter local-access-control term terminal-access from destination-port 22
+set firewall family inet filter local-access-control term terminal-access then accept
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.12.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.13.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.14.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.16.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.18.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.252.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.254.201/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.254.205/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.41.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.42.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.43.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.1.129.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.254.193/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.22.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.28.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.46.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.1.132.1/32
+set firewall family inet filter local-access-control term terminal-access-deny from destination-address 10.0.254.20/32
+set firewall family inet filter local-access-control term terminal-access-deny from protocol tcp
+set firewall family inet filter local-access-control term terminal-access-deny from destination-port 22
+set firewall family inet filter local-access-control term terminal-access-deny then discard
+set firewall family inet filter local-access-control term snmp-access from source-address 206.131.211.0/24
+set firewall family inet filter local-access-control term snmp-access from source-address 10.0.128.0/24
+set firewall family inet filter local-access-control term snmp-access from protocol udp
+set firewall family inet filter local-access-control term snmp-access from destination-port 161
+set firewall family inet filter local-access-control term snmp-access then accept
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.12.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.13.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.14.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.16.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.18.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.252.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.254.201/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.254.205/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.41.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.42.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.43.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.1.129.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.22.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.28.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.0.46.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from destination-address 10.1.132.1/32
+set firewall family inet filter local-access-control term snmp-access-deny from protocol udp
+set firewall family inet filter local-access-control term snmp-access-deny from destination-port 161
+set firewall family inet filter local-access-control term snmp-access-deny then discard
+set firewall family inet filter local-access-control term netconf-access from source-address 10.0.128.0/24
+set firewall family inet filter local-access-control term netconf-access from source-address 206.131.211.0/24
+set firewall family inet filter local-access-control term netconf-access from protocol tcp
+set firewall family inet filter local-access-control term netconf-access from destination-port 830
+set firewall family inet filter local-access-control term netconf-access then accept
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.12.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.13.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.14.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.16.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.18.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.252.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.254.201/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.254.205/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.41.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.42.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.43.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.1.129.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.22.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.28.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.0.46.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from destination-address 10.1.132.1/32
+set firewall family inet filter local-access-control term netconf-access-deny from protocol tcp
+set firewall family inet filter local-access-control term netconf-access-deny from destination-port 830
+set firewall family inet filter local-access-control term netconf-access-deny then discard
+set firewall family inet filter local-access-control term default then accept
+set ethernet-switching-options analyzer dyn input ingress interface ge-6/0/11.0
+set ethernet-switching-options analyzer dyn input ingress interface ge-6/0/14.0
+set ethernet-switching-options analyzer dyn input egress interface ge-6/0/11.0
+set ethernet-switching-options analyzer dyn input egress interface ge-6/0/14.0
+set ethernet-switching-options analyzer dyn output interface ge-6/0/39.0
+set ethernet-switching-options nonstop-bridging
+set vlans AIX-Dev vlan-id 22
+set vlans AIX-Dev l3-interface vlan.22
+deactivate vlans AIX-Dev l3-interface
+set vlans AIX-Prod vlan-id 20
+set vlans AIX-Prod l3-interface vlan.20
+deactivate vlans AIX-Prod l3-interface
+set vlans AS400-HMC vlan-id 301
+set vlans BelronBYOD vlan-id 824
+set vlans Bridged_DMZ vlan-id 804
+set vlans Bridged_internal vlan-id 802
+set vlans Core vlan-id 2
+set vlans Core l3-interface vlan.2
+deactivate vlans Core l3-interface
+set vlans CorpGuest vlan-id 821
+set vlans DMZ1-int vlan-id 835
+set vlans F5INT-Failover vlan-id 816
+set vlans FieldGuest vlan-id 823
+set vlans KioskWireless vlan-id 822
+set vlans NetworkMGMT-DC vlan-id 252
+set vlans NetworkMGMT-DC l3-interface vlan.252
+deactivate vlans NetworkMGMT-DC l3-interface
+set vlans PIX-Failover vlan-id 805
+set vlans PIX-Stateful vlan-id 806
+set vlans PIXVPN-Failover vlan-id 814
+set vlans PIXVPN-Stateful vlan-id 815
+set vlans SAW-Routing-A vlan-id 398
+set vlans SIP-Level3 vlan-id 302
+set vlans Sawmill-WAAS vlan-id 397
+set vlans ServerDMZ vlan-id 9
+set vlans aix-h1 vlan-id 811
+set vlans aix-h2 vlan-id 812
+set vlans bridged-LWAPPwireless vlan-id 819
+set vlans bridged-external vlan-id 803
+set vlans bridged-ezvpnexternal vlan-id 810
+set vlans bridged-ezvpninternal vlan-id 807
+set vlans core-mdf1a-l3 vlan-id 395
+set vlans core-mdf1a-l3 l3-interface vlan.395
+set vlans core-mdf1b-l3 vlan-id 396
+set vlans core-mdf1b-l3 l3-interface vlan.396
+set vlans dev-qa vlan-id 26
+set vlans dev-qa l3-interface vlan.26
+deactivate vlans dev-qa l3-interface
+set vlans dmz-iaai1 vlan-id 834
+set vlans dmz-iaai2 vlan-id 838
+set vlans drac vlan-id 12
+set vlans drac l3-interface vlan.12
+deactivate vlans drac l3-interface
+set vlans f5di01-vips vlan-id 257
+set vlans f5di01-vips l3-interface vlan.257
+deactivate vlans f5di01-vips l3-interface
+set vlans f5di01-vips-244 vlan-id 244
+set vlans f5dmz vlan-id 19
+set vlans f5lpi01-vips vlan-id 256
+set vlans f5lpi01-vips l3-interface vlan.256
+deactivate vlans f5lpi01-vips l3-interface
+set vlans f5lpi01-vips-240 vlan-id 240
+set vlans f5lpi01-vips-240 l3-interface vlan.240
+deactivate vlans f5lpi01-vips-240 l3-interface
+set vlans f5pe01a-failover vlan-id 817
+set vlans facilities vlan-id 58
+set vlans facilities l3-interface vlan.58
+deactivate vlans facilities l3-interface
+set vlans fortigate310-ha vlan-id 836
+set vlans giantglass-dmz vlan-id 837
+set vlans internal-real-ip vlan-id 303
+set vlans juniper-fab vlan-id 833
+set vlans juniper-ha vlan-id 832
+set vlans legacy-prod vlan-id 36
+set vlans legacy-prod l3-interface vlan.36
+deactivate vlans legacy-prod l3-interface
+set vlans mainframe vlan-id 24
+set vlans mainframe l3-interface vlan.24
+deactivate vlans mainframe l3-interface
+set vlans network-servers vlan-id 128
+set vlans sabrix-multicast vlan-id 818
+set vlans san vlan-id 32
+set vlans san l3-interface vlan.32
+deactivate vlans san l3-interface
+set vlans security-camera vlan-id 68
+set vlans svcconsole vlan-id 13
+set vlans svcconsole l3-interface vlan.13
+deactivate vlans svcconsole l3-interface
+set vlans systembuild vlan-id 46
+set vlans systembuild l3-interface vlan.46
+deactivate vlans systembuild l3-interface
+set vlans tel-ctrl-a vlan-id 53
+set vlans tel-ctrl-b vlan-id 54
+set vlans telecom vlan-id 52
+set vlans telecom-lab vlan-id 55
+set vlans thirdPartyDMZ vlan-id 10
+set vlans unused-cstp vlan-id 899
+set vlans unused-native vlan-id 1
+set vlans usaa-asa vlan-id 979
+set vlans usaa-asa l3-interface vlan.979
+set vlans verint vlan-id 48
+set vlans virtual-desktop-01 vlan-id 40
+set vlans virtual-desktop-192 vlan-id 192
+set vlans virtual-desktop-192 l3-interface vlan.192
+deactivate vlans virtual-desktop-192 l3-interface
+set vlans virtual-desktop-193 vlan-id 193
+set vlans virtual-desktop-193 l3-interface vlan.193
+deactivate vlans virtual-desktop-193 l3-interface
+set vlans virtual-desktop-194 vlan-id 194
+set vlans virtual-desktop-194 l3-interface vlan.194
+deactivate vlans virtual-desktop-194 l3-interface
+set vlans virtual-desktop-195 vlan-id 195
+set vlans virtual-desktop-195 l3-interface vlan.195
+deactivate vlans virtual-desktop-195 l3-interface
+set vlans virtual-desktop-41 vlan-id 41
+set vlans virtual-desktop-41 l3-interface vlan.41
+deactivate vlans virtual-desktop-41 l3-interface
+set vlans virtual-desktop-42 vlan-id 42
+set vlans virtual-desktop-42 l3-interface vlan.42
+deactivate vlans virtual-desktop-42 l3-interface
+set vlans virtual-desktop-43 vlan-id 43
+set vlans virtual-desktop-43 l3-interface vlan.43
+deactivate vlans virtual-desktop-43 l3-interface
+set vlans vkernel-vmotion vlan-id 14
+set vlans vkernel-vmotion l3-interface vlan.14
+deactivate vlans vkernel-vmotion l3-interface
+set vlans windows-dev vlan-id 18
+set vlans windows-dev l3-interface vlan.18
+deactivate vlans windows-dev l3-interface
+set vlans windows-heardbeat vlan-id 813
+set vlans windows-production vlan-id 16
+set vlans windows-production l3-interface vlan.16
+deactivate vlans windows-production l3-interface
+set virtual-chassis preprovisioned
+set virtual-chassis member 0 role line-card
+set virtual-chassis member 0 serial-number BT0910474415
+set virtual-chassis member 1 role line-card
+set virtual-chassis member 1 serial-number BT0910474345
+set virtual-chassis member 8 role routing-engine
+set virtual-chassis member 8 serial-number 062011000002
+set virtual-chassis member 9 role routing-engine
+set virtual-chassis member 9 serial-number 062011000003
