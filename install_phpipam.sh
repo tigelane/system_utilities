@@ -15,7 +15,7 @@ cat >> /etc/httpd/conf/httpd.conf <<_EOF_
 ServerName locahost:80
 _EOF_
 
-sed -i '/;date.timezone =/ c\date.timezone = America\/Los_Angeles/' /etc/php.ini
+sed -i '/;date.timezone =/ c\date.timezone = America\/Los_Angeles' /etc/php.ini
 
 sudo service httpd start
 sudo chkconfig httpd on
