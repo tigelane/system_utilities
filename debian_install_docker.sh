@@ -11,7 +11,6 @@ apt install docker-ce=17.03.2~ce-0~ubuntu-xenial
 #sudo systemctl status docker
 sudo usermod -aG docker ${USER}
 
-# Download and run
+# Download command for this script
 exit
-wget -O debian_install_docker.sh https://raw.githubusercontent.com/tigelane/system_utilities/master/install_docker_ubuntu.sh && chmod +x debian_install_docker.sh
-chmod +x *_install_docker.
+wget -O debian_install_docker.sh https://raw.githubusercontent.com/tigelane/system_utilities/master/debian_install_docker.sh && chmod +x debian_install_docker.sh
