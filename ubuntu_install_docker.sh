@@ -14,4 +14,4 @@ sudo usermod -aG docker ${USER}
 
 # Download info
 exit
-wget -O ubuntu_install_docker.sh https://raw.githubusercontent.com/tigelane/system_utilities/master/ubuntu_install_docker.sh %% chmod +x ubuntu_install_docker.sh
+wget -O ubuntu_install_docker.sh https://raw.githubusercontent.com/tigelane/system_utilities/master/ubuntu_install_docker.sh && chmod +x ubuntu_install_docker.sh
