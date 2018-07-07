@@ -9,8 +9,10 @@ sudo apt-get install -y docker-ce
 sudo systemctl status docker
 sudo usermod -aG docker ${USER}
 
-# Download info
+# Download and execute script
+# Here so it doesn't execute again.
 exit
+# Copy after this line
 wget -O ubuntu_install_docker.sh https://raw.githubusercontent.com/tigelane/system_utilities/master/ubuntu_install_docker.sh \
     && chmod +x ubuntu_install_docker.sh \
     && ./ubuntu_install_docker.sh
