@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Installs github Actions runner on Ubuntu 18.04
 
 # Update system and install git
@@ -23,4 +25,5 @@ apt-cache madison docker-ce
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 
 sudo usermod -aG docker ${USER}
-# Log out and log back in
+
+echo "Please Log out and log back in.  When you come back run part2."
